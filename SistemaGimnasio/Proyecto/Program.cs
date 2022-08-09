@@ -19,6 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 builder.Services.AddScoped<IUsuarioServicio, UsuarioServicio>();
 builder.Services.AddScoped<IClienteServicio, ClienteServicio>();
+builder.Services.AddScoped<IServiceServicio, ServiceServicio>();
 builder.Services.AddSweetAlert2();
 
 
