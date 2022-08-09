@@ -1,0 +1,64 @@
+﻿@page "/Clientes/Nuevo"
+<AuthorizeView Roles="Administrador, Usuario">
+	<Authorized Context="AuthenticationState">
+
+		<h3>Nuevo Cliente</h3>
+		<br />
+		<EditForm Model="@cl">
+			<DataAnnotationsValidator />
+			<div class="form-group row">
+				<label for="Identidad" class="col-sm-2 col-form-label">
+					Identidad
+				</label>
+				<div class="col-sm-10">
+					<InputText id="Identidad" class="form-control" @bind-Value="cl.Identidad"/>
+					<ValidationMessage For="@(() => cl.Identidad)" />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="Nombre" class="col-sm-2 col-form-label">
+					Nombre
+				</label>
+				<div class="col-sm-10">
+					<InputText id="Nombre" class="form-control" @bind-Value="cl.Nombre"/>
+					<ValidationMessage For="@(() => cl.Nombre)" />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="Direccion" class="col-sm-2 col-form-label">
+					Dirección
+				</label>
+				<div class="col-sm-10">
+					<InputText id="Direccion" class="form-control" @bind-Value="cl.Direccion"/>
+					<ValidationMessage For="@(() => cl.Direccion)" />
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="Email" class="col-sm-2 col-form-label">
+					Email
+				</label>
+				<div class="col-sm-10">
+					<InputText id="Email" class="form-control" @bind-Value="cl.Email"/>
+					<ValidationMessage For="@(() => cl.Email)" />
+				</div>
+			</div>
+
+
+			<div class="form-group row">
+				<p>
+					<input type="submit" class="btn btn-primary" value="Guardar" @onclick="Guardar" />
+					<input type="submit" class="btn btn-danger" value="Cancelar" @onclick="Cancelar" />
+				</p>
+
+			</div>
+
+		</EditForm>
+		
+
+	</Authorized>
+
+
+</AuthorizeView>
