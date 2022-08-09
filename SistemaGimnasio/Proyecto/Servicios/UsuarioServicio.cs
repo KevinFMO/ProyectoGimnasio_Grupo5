@@ -1,33 +1,45 @@
-﻿using Modelos;
+﻿using Datos.Interfaces;
+using Datos.Repositorios;
+using Modelos;
+using Proyecto.Data;
 using Proyecto.Interfaces;
 
 namespace Proyecto.Servicios
 {
     public class UsuarioServicio : IUsuarioServicio
     {
-        public Task<bool> Actualizar(Usuario usuario)
+        private readonly MySQLConfiguracion _configuracion;
+        private IUsuarioRepositorio usuarioRepositorio;
+
+        public UsuarioServicio(MySQLConfiguracion configuracion)
         {
-            throw new NotImplementedException();
+            _configuracion = configuracion;
+            usuarioRepositorio = new UsuarioRepositorio(configuracion.CadenaConexion);
         }
 
-        public Task<bool> Eliminar(Usuario usuario)
+        public async Task<bool> Actualizar(Usuario usuario)
         {
-            throw new NotImplementedException();
+            return await usuarioRepositorio.Actualizar(usuario);
         }
 
-        public Task<IEnumerable<Usuario>> GetLista()
+        public async Task<bool> Eliminar(Usuario usuario)
         {
-            throw new NotImplementedException();
+            return await usuarioRepositorio.Eliminar(usuario);
         }
 
-        public Task<Usuario> GetPorCodigo(string codigo)
+        public async Task<IEnumerable<Usuario>> GetLista()
         {
-            throw new NotImplementedException();
+            return await usuarioRepositorio.GetLista();
         }
 
-        public Task<bool> Nuevo(Usuario usuario)
+        public async Task<Usuario> GetPorCodigo(string codigo)
         {
-            throw new NotImplementedException();
+            return await usuarioRepositorio.GetPorCodigo(codigo);
+        }
+
+        public async Task<bool> Nuevo(Usuario usuario)
+        {
+            return await usuarioRepositorio.Nuevo(usuario);
         }
     }
 }

@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Components.Web;
 using Proyecto.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Proyecto.Interfaces;
+using Proyecto.Servicios;
+using CurrieTechnologies.Razor.SweetAlert2;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,9 @@ var  cadenaConexion = new MySQLConfiguracion(builder.Configuration.GetConnection
 builder.Services.AddSingleton(cadenaConexion);
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+builder.Services.AddScoped<IUsuarioServicio, UsuarioServicio>();
+builder.Services.AddScoped<IClienteServicio, ClienteServicio>();
+builder.Services.AddSweetAlert2();
 
 
 var app = builder.Build();
