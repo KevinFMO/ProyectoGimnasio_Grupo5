@@ -21,7 +21,8 @@
 					<tr>
 						<th>Código</th>
 						<th>Descripción</th>
-						<th>Precio</th>
+						<th>PrecioDia</th>
+						<th>PrecioMes</th>
 						<th>Editar</th>
 					</tr>
 				</thead>
@@ -31,7 +32,8 @@
 						<tr>
 							<td>@service.Codigo</td>
 							<td>@service.Descripcion</td>
-							<td>@service.Precio</td>
+							<td>@service.PrecioDia</td>
+							<td>@service.PrecioMes</td>
 							<th>
 								<a class="btn btn-success" href="@($"/Servicios/Editar/{service.Codigo}")">Editar</a>
 							</th>

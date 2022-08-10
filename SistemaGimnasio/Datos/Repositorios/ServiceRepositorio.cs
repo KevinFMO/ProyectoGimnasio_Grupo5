@@ -33,7 +33,7 @@ namespace Datos.Repositorios
             {
                 using MySqlConnection conexion = Conexion();
                 await conexion.OpenAsync();
-                string sql = @"UPDATE servicio SET Descripcion = @Descripcion, Precio = @Precio
+                string sql = @"UPDATE servicio SET Descripcion = @Descripcion, PrecioDia = @PrecioDia, PrecioMes = @PrecioMes
                                 WHERE Codigo = @Codigo;";
                 result = Convert.ToBoolean(await conexion.ExecuteAsync(sql, servicio));
 
@@ -100,8 +100,8 @@ namespace Datos.Repositorios
             {
                 using MySqlConnection conexion = Conexion();
                 await conexion.OpenAsync();
-                string sql = @"INSERT INTO servicio (Codigo, Descripcion, Precio) 
-                                VALUES (@Codigo, @Descripcion, @Precio);";
+                string sql = @"INSERT INTO servicio (Codigo, Descripcion, PrecioDia, PrecioMes) 
+                                VALUES (@Codigo, @Descripcion, @PrecioDia, @PrecioMes);";
                 result = Convert.ToBoolean(await conexion.ExecuteAsync(sql, servicio));
 
             }

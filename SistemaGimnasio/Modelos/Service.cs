@@ -13,7 +13,10 @@ namespace Modelos
         public string Codigo { get; set; }
         [Required(ErrorMessage = "La descripción es obligatoria")]
         public string Descripcion { get; set; }
-        [Required(ErrorMessage = "El precio es obligatorio")]
-        public decimal Precio { get; set; }
+        [Required(ErrorMessage = "El precio por día es obligatorio")]
+        public decimal PrecioDia { get; set; }
+        [Required(ErrorMessage = "El precio por mes es obligatorio")]
+        public decimal PrecioMes { get; set; }
+
     }
 }
