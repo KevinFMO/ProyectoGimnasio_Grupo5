@@ -17,6 +17,8 @@ namespace Modelos
         public decimal PrecioDia { get; set; }
         [Required(ErrorMessage = "El precio por mes es obligatorio")]
         public decimal PrecioMes { get; set; }
+        [Required(ErrorMessage = "El tiempo de contratación del servicio es obligatorio")]
+        public string Tiempo { get; set; }
 
     }
 }

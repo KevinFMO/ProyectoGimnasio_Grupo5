@@ -20,6 +20,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddScoped<IUsuarioServicio, UsuarioServicio>();
 builder.Services.AddScoped<IClienteServicio, ClienteServicio>();
 builder.Services.AddScoped<IServiceServicio, ServiceServicio>();
+builder.Services.AddScoped<IFacturaServicio, FacturaServicio>();
+builder.Services.AddScoped<IDetalleFacturaServicio, DetalleFacturaServicio>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddResponseCompression();
 builder.Services.AddSweetAlert2();
 
 
