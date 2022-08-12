@@ -45,7 +45,7 @@ namespace Proyecto.Pages.Facturacion
         {
             if (service.Tiempo == "Seleccionar" || string.IsNullOrEmpty(service.Tiempo) )
             {
-                await Swal.FireAsync("Error", "Seleccione el tiempo del servicio", SweetAlertIcon.Error);
+               // await Swal.FireAsync("Error", "Seleccione el tiempo del servicio", SweetAlertIcon.Error);
                 return;
             }
             if (args.Detail != 0)
