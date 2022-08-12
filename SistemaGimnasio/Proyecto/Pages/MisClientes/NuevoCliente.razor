@@ -1,8 +1,10 @@
 ﻿@page "/Clientes/Nuevo"
 <AuthorizeView Roles="Administrador, Usuario">
 	<Authorized Context="AuthenticationState">
-
-		<h3>Nuevo Cliente</h3>
+		<div align="center">
+            <h2>Nuevo Cliente</h2>
+        </div>
+		
 		<br />
 		<EditForm Model="@cl">
 			<DataAnnotationsValidator />

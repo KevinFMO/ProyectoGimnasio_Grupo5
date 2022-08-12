@@ -43,6 +43,11 @@ namespace Proyecto.Pages.Facturacion
 
         protected async Task AgregarServicio(MouseEventArgs args) 
         {
+            if (service.Tiempo == "Seleccionar" || string.IsNullOrEmpty(service.Tiempo) )
+            {
+                await Swal.FireAsync("Error", "Seleccione el tiempo del servicio", SweetAlertIcon.Error);
+                return;
+            }
             if (args.Detail != 0)
             {
                 if (service !=null)
@@ -68,12 +73,11 @@ namespace Proyecto.Pages.Facturacion
                     service.Descripcion = string.Empty;
                     service.PrecioDia = 0;
                     service.PrecioMes = 0;
-                    //TipoPrecio = string.Empty;
                     codigoServicio = string.Empty;
 
-                    //factura.Subtotal = factura.Subtotal + detalle.Total;
-                    //factura.ISV = factura.Subtotal * 0.15M;
-                    //factura.Total = factura.Subtotal + factura.ISV - factura.Descuento;
+                    factura.Subtotal = factura.Subtotal + detalle.Total;
+                    factura.ISV = factura.Subtotal * 0.15M;
+                    factura.Total = factura.Subtotal + factura.ISV - factura.Descuento;
 
 
 
@@ -81,6 +85,28 @@ namespace Proyecto.Pages.Facturacion
             }
         }
 
+
+        protected async Task Guardar()
+        {
+            factura.CodigoUsuario = httpContextAccessor.HttpContext.User.Identity.Name;
+            int idFactura = await facturaServicio.Nueva(factura);
+            if (idFactura != 0)
+            {
+                foreach (var item in listaDetalleFactura)
+                {
+                    item.IdFactura = idFactura;
+                    await detalleFacturaServicio.Nuevo(item);
+                }
+                await Swal.FireAsync("Atención", "Factura guardada con exito", SweetAlertIcon.Success);
+            }
+            else
+            {
+                await Swal.FireAsync("Error", "No se pudo guardar la factura", SweetAlertIcon.Error);
+            }
+
+
+
+        }
 
 
     }

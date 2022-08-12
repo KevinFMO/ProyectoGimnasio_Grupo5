@@ -36,7 +36,7 @@ namespace Proyecto.Pages.MisServicios
 
             if (edito)
             {
-                await Swal.FireAsync("Guardar", "Servicio guardado con exito", SweetAlertIcon.Success);
+                await Swal.FireAsync("Guardar", "Servicio actualizado con exito", SweetAlertIcon.Success);
                 navigationManager.NavigateTo("/Servicios");
             }
             else

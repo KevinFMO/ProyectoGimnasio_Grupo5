@@ -2,8 +2,10 @@
 
 <AuthorizeView Roles="Administrador">
 	<Authorized Context="AuthenticationState">
-
-		<h3>Nuevo Servicio</h3>
+		<div align="center">
+            <h2>Nuevo Servicio</h2>
+        </div>
+		
 		<br />
 		<EditForm Model="@service">
 			<DataAnnotationsValidator />
@@ -54,9 +56,9 @@
 			</div>
 
 		</EditForm>
-		
 
 	</Authorized>
+	
 
 
 </AuthorizeView>
